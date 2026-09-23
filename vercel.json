@@ -13,10 +13,7 @@
       "entrypoint": "backend.app:app",
       "functions": {
         "backend/app.py": {
-          "includeFiles": [
-            "dataset/netflix_customer_churn (1).csv",
-            "ML/artifacts/gradient_boosting_pipeline.joblib"
-          ],
+          "includeFiles": "{dataset/netflix_customer_churn (1).csv,ML/artifacts/gradient_boosting_pipeline.joblib}",
           "excludeFiles": "{backend/tests/**,ML/train.py,ML/eda.py,frontend/**}"
         }
       },
