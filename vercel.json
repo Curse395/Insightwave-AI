@@ -17,12 +17,7 @@
             "dataset/netflix_customer_churn (1).csv",
             "ML/artifacts/gradient_boosting_pipeline.joblib"
           ],
-          "excludeFiles": [
-            "backend/tests/**",
-            "ML/train.py",
-            "ML/eda.py",
-            "frontend/**"
-          ]
+          "excludeFiles": "{backend/tests/**,ML/train.py,ML/eda.py,frontend/**}"
         }
       },
       "routes": [
