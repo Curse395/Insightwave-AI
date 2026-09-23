@@ -116,3 +116,33 @@ InsightWave uses the **Netflix Customer Churn Dataset**.
 churned
 0 = Not Churned
 1 = Churned
+
+## Vercel Deployment
+
+InsightWave is configured as one Vercel Project using Vercel Services:
+
+- `frontend` builds the React/Vite application and serves `/`.
+- `backend` runs the existing FastAPI application.
+- `/api/*` is routed to FastAPI and the internal service transform removes the `/api` prefix before the existing routes handle the request.
+
+The deployment configuration is in `vercel.json`. The frontend remains configured with `VITE_API_BASE_URL=/api` by default, so production uses one domain without a CORS workaround.
+
+### Required Vercel environment variable
+
+Add this variable in the Vercel Project Settings for the Production, Preview, and Development environments as needed:
+
+```text
+GROQ_API_KEY=your_groq_api_key
+```
+
+Never commit `.env`. It is ignored by Git and is intended only for local development.
+
+### Local commands
+
+```powershell
+python -m uvicorn backend.app:app --host 127.0.0.1 --port 8000
+cd frontend
+npm run dev
+```
+
+Vercel Services are a Vercel platform feature and may require Services access to be enabled for the account. Connect the repository as one Vercel Project, keep the project root at the repository root, and add `GROQ_API_KEY` in the dashboard before deploying.
